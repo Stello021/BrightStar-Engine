@@ -1,0 +1,85 @@
+---
+title: Architecture Diagram (Windows, Linux (x86))
+---
+flowchart TB
+	subgraph GameApplication["Game.exe"]
+		direction TB
+	end
+
+	subgraph TestApplication["Test.exe"]
+		direction TB
+	end
+
+	subgraph EditorApp["Level Editor GUI"]
+		direction TB
+		subgraph EditorFramework["C++, Qt"]
+		end
+	end
+
+	subgraph EngineLibrary["Engine Library DLL"]
+		direction TB
+		subgraph EngineFramework["C++, Vulkan"]
+			subgraph RendererFrontendLayer["Renderer frontend layer"]
+				id26[Scenegraph]
+				id27[Camera Management]
+				id28[PostFX]
+			end
+
+			subgraph RendererBackendLayer["Renderer backend layer"]
+				id29[API Abstraction]
+				id30[Lighting]
+				id31[Shaders]
+			end
+
+			subgraph ResourcesLayer ["Resources layer"]
+				id21[Images]
+				id22[Materials]
+				id23[Meshes]
+				id24[Animations]
+				id25[World Maps]
+			end
+
+			subgraph Corelayer["Core layer"]
+				id9[Logger]
+				id10[Low-level utilities]
+				id12[Assertions]
+				id13[Memory management]
+				id14[Math utilities]
+				id15[Parsers]
+				id16[Engine configuration]
+				id7[Profiling and debugging utilities]
+				id17[Async File I/O]
+				id18[Localization]
+				id19[String utilities]
+				id20[RNG]
+
+			end
+			id2[Game layer]
+			subgraph Platformlayer["Platform layer"]
+				id4[Physics layer]
+				id5[Renderer layer]
+				id6[Platform APIs]
+				id8[File I/O]
+				id11[Memory]
+			end
+
+			Corelayer --> Platformlayer
+			ResourcesLayer --> Corelayer
+			RendererFrontendLayer --> RendererBackendLayer
+			RendererBackendLayer --> ResourcesLayer
+		end
+	end
+
+	subgraph GameScripting["Scripting Layer"]
+		direction TB
+		subgraph ScriptingFramework["C++, Lua, Python"]
+		end
+	end
+
+	GameApplication --> GameScripting
+	TestApplication --> GameScripting
+	EditorApp --> EngineLibrary
+	GameScripting -->|Hot Reload| EngineLibrary
+	GameScripting --> EditorApp
+
+
