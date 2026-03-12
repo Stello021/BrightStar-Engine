@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QDialog>
+#include <QButtonGroup>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class QProjectBrowserDialog; };
@@ -15,5 +16,8 @@ public:
 	~QProjectBrowserDialog();
 
 private:
+	//Manage mutual exclusivity between the nav buttons
+	QButtonGroup* m_buttonGroup;
+
 	Ui::QProjectBrowserDialog* ui;
 };
