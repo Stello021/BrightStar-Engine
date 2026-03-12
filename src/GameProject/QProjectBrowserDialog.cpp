@@ -38,6 +38,9 @@ QProjectBrowserDialog::QProjectBrowserDialog(QWidget *parent)
 			}
 		});
 
+	//Set the initial page to "Open Project"
+	ui->contentStack->setCurrentIndex(0);
+
 	ui->navigationLayout->setSpacing(30);
 }
 
