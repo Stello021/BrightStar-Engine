@@ -12,14 +12,46 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
+set(CMAKE_AUTOUIC_SEARCH_PATHS
+    ${CMAKE_SOURCE_DIR}/ui
+    ${CMAKE_SOURCE_DIR}/ui/GameProject) # This is the path where CMake will look for .ui files
+
 add_subdirectory(external/engine)
+
+# Grouping sorces by subsystem
+
+set(EDITOR_SOURCES
+    src/main.cpp
+    src/MainWindow.cpp
+)
+
+set(EDITOR_HEADERS
+    include/MainWindow.h
+)
+
+set(GAMEPROJECT_SOURCES
+    src/GameProject/QProjectBrowserDialog.cpp
+)
+
+set(GAMEPROJECT_HEADERS
+    include/GameProject/QProjectBrowserDialog.h
+)
+
+set(GAMEPROJECT_UI
+    ui/GameProject/QProjectBrowserDialog.ui
+)
+
+source_group(TREE ${CMAKE_SOURCE_DIR}/src    PREFIX "Source Files" FILES ${EDITOR_SOURCES} ${GAMEPROJECT_SOURCES})
+source_group(TREE ${CMAKE_SOURCE_DIR}/include PREFIX "Header Files" FILES ${EDITOR_HEADERS} ${GAMEPROJECT_HEADERS})
+source_group(TREE ${CMAKE_SOURCE_DIR}/ui      PREFIX "UI Files"     FILES ${GAMEPROJECT_UI})
 
 #Executable for the application
 add_executable(${PROJECT_NAME}
-src/main.cpp
-src/MainWindow.cpp
-include/MainWindow.h # Needs to be included for AUTOMOC. In this way,
-                     # CMake can pass the header file to the MOC preprocessor to generate the necessary  code for Q_OBJECT macro.
+    ${EDITOR_SOURCES}
+    ${EDITOR_HEADERS}
+    ${GAMEPROJECT_SOURCES}
+    ${GAMEPROJECT_HEADERS}
+    ${GAMEPROJECT_UI}
 )
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
