@@ -1,0 +1,50 @@
+/* Central stylesheet for BrightStar Engine Editor - Dark Theme            */
+/* All selectors use widget objectName (#name) to avoid accidental leaking */
+
+/* Dialog */
+QDialog {
+	background-color: #1e1e2e;
+}
+
+/* Navigation Bar */
+QWidget#navigationBar {
+	background-color: #181825;
+	border-bottom: 1px solid #313244;
+}
+
+/* Navigation Buttons (Tab-style ToggleButtons) */
+/* any QPushButton inside navigationBar will receive this style automatically when reparented.*/
+QWidget#navigationBar QPushButton {
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 10px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #6c7086;
+    min-width: 160px;
+}
+QWidget#navigationBar QPushButton:hover {
+    color: #cdd6f4;
+    background-color: rgba(255, 255, 255, 0.04);
+}
+QWidget#navigationBar QPushButton:checked {
+    color: #cdd6f4;
+    border-bottom: 3px solid #89b4fa;
+}
+
+/* Content Pages */
+QWidget#pageOpenProject {
+    background-color: #1e2030;
+}
+QWidget#pageNewProject {
+    background-color: #1e2d22;
+}
+
+/* Content Labels (watermark effect) */
+QWidget#pageOpenProject QLabel,
+QWidget#pageNewProject  QLabel {
+    font-size: 56px;
+    font-weight: bold;
+    color: rgba(205, 214, 244, 0.12);
+}

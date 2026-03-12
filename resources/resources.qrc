@@ -1,0 +1,6 @@
+<!-- resources/resources.qrc -->
+<RCC>
+    <qresource prefix="/">
+        <file>styles/BrightStarDark.qss</file>
+    </qresource>
+</RCC>

@@ -23,11 +23,11 @@ add_subdirectory(external/engine)
 set(EDITOR_SOURCES
     src/main.cpp
     src/MainWindow.cpp
-)
+    src/StyleManager.cpp)
 
 set(EDITOR_HEADERS
     include/MainWindow.h
-)
+    include/StyleManager.h)
 
 set(GAMEPROJECT_SOURCES
     src/GameProject/QProjectBrowserDialog.cpp
@@ -41,6 +41,9 @@ set(GAMEPROJECT_UI
     ui/GameProject/QProjectBrowserDialog.ui
 )
 
+set(EDITOR_RESOURCES
+    resources/resources.qrc)
+
 source_group(TREE ${CMAKE_SOURCE_DIR}/src    PREFIX "Source Files" FILES ${EDITOR_SOURCES} ${GAMEPROJECT_SOURCES})
 source_group(TREE ${CMAKE_SOURCE_DIR}/include PREFIX "Header Files" FILES ${EDITOR_HEADERS} ${GAMEPROJECT_HEADERS})
 source_group(TREE ${CMAKE_SOURCE_DIR}/ui      PREFIX "UI Files"     FILES ${GAMEPROJECT_UI})
@@ -52,6 +55,7 @@ add_executable(${PROJECT_NAME}
     ${GAMEPROJECT_SOURCES}
     ${GAMEPROJECT_HEADERS}
     ${GAMEPROJECT_UI}
+    ${EDITOR_RESOURCES}
 )
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
