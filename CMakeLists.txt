@@ -31,14 +31,17 @@ set(EDITOR_HEADERS
 
 set(GAMEPROJECT_SOURCES
     src/GameProject/QProjectBrowserDialog.cpp
+    src/GameProject/NewProjectWidget.cpp
 )
 
 set(GAMEPROJECT_HEADERS
     include/GameProject/QProjectBrowserDialog.h
+    include/GameProject/NewProjectWidget.h
 )
 
 set(GAMEPROJECT_UI
     ui/GameProject/QProjectBrowserDialog.ui
+    ui/GameProject/NewProjectWidget.ui
 )
 
 set(EDITOR_RESOURCES

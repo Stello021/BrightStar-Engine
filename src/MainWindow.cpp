@@ -12,7 +12,6 @@ MainWindow::MainWindow(QWidget* parent)
 {
 	// Set up the main window (e.g., set title, size, etc.)
 	setWindowTitle("Brightstar Engine Editor");
-	resize(1280, 720);
 
 	// Use parent widget's screen if available, otherwise use the primary screen
 	const QScreen* targetScreen = parentWidget() ? parentWidget()->screen() : QGuiApplication::primaryScreen();

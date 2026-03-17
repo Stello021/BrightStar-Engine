@@ -4,6 +4,7 @@
 #include <QScreen>
 #include <QGuiApplication>
 #include <QButtonGroup>
+#include <GameProject/NewProjectWidget.h>
 
 QProjectBrowserDialog::QProjectBrowserDialog(QWidget *parent)
 	: QDialog(parent)
@@ -14,9 +15,6 @@ QProjectBrowserDialog::QProjectBrowserDialog(QWidget *parent)
 
 	// Set flag to disable resize border and disabled maximize button at OS level
 	setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
-
-	// Set the fixed size of the dialog to its size hint, preventing resizing
-	setFixedSize(sizeHint());
 
 	// Use parent widget's screen if available, otherwise use the primary screen
 	const QScreen* targetScreen = parentWidget() ? parentWidget()->screen() : QGuiApplication::primaryScreen();
@@ -42,6 +40,23 @@ QProjectBrowserDialog::QProjectBrowserDialog(QWidget *parent)
 	ui->contentStack->setCurrentIndex(0);
 
 	ui->navigationLayout->setSpacing(30);
+
+	NewProjectWidget* newProjectWidget = new NewProjectWidget(this);
+
+	ui->contentStack->removeWidget(ui->pageNewProject);
+	ui->contentStack->insertWidget(1, newProjectWidget);
+
+	connect(newProjectWidget, &NewProjectWidget::projectCreationRequested,
+		this, [this](const QString& name, const QString& path, const QString& tmplId)
+		{
+			accept();
+		});
+
+	connect(newProjectWidget, &NewProjectWidget::validationFailed,
+		this, [this](const QString& reason)
+		{
+
+		});
 }
 
 QProjectBrowserDialog::~QProjectBrowserDialog()
