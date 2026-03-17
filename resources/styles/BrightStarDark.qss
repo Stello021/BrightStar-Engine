@@ -48,3 +48,99 @@ QWidget#pageNewProject  QLabel {
     font-weight: bold;
     color: rgba(205, 214, 244, 0.12);
 }
+
+/* Template list */
+NewProjectWidget QListWidget#templateList {
+    background-color: #181825;
+    border: 1px solid #313244;
+    border-radius: 6px;
+    color: #cdd6f4;
+    font-size: 13px;
+    outline: none;           /* suppress the dotted focus rect */
+}
+NewProjectWidget QListWidget#templateList::item {
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+NewProjectWidget QListWidget#templateList::item:hover {
+    background-color: rgba(137, 180, 250, 0.08);
+}
+NewProjectWidget QListWidget#templateList::item:selected {
+    background-color: rgba(137, 180, 250, 0.18);
+    color: #89b4fa;
+}
+
+/* Preview pane */
+NewProjectWidget QFrame#previewPane {
+    background-color: #11111b;
+    border: 1px solid #313244;
+    border-radius: 6px;
+}
+
+/* Form labels */
+NewProjectWidget QLabel#labelName,
+NewProjectWidget QLabel#labelPath {
+    color: #a6adc8;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Text inputs */
+NewProjectWidget QLineEdit#inputName,
+NewProjectWidget QLineEdit#inputPath {
+    background-color: #181825;
+    border: 1px solid #313244;
+    border-radius: 5px;
+    color: #cdd6f4;
+    font-size: 13px;
+    padding: 5px 10px;
+    selection-background-color: #89b4fa;
+    selection-color: #1e1e2e;
+}
+NewProjectWidget QLineEdit#inputName:focus,
+NewProjectWidget QLineEdit#inputPath:focus {
+    border-color: #89b4fa;
+}
+NewProjectWidget QLineEdit#inputName:hover,
+NewProjectWidget QLineEdit#inputPath:hover {
+    border-color: #585b70;
+}
+
+/* Browse button */
+NewProjectWidget QPushButton#btnBrowse {
+    background-color: #313244;
+    border: 1px solid #45475a;
+    border-radius: 5px;
+    color: #cdd6f4;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px 8px;
+}
+NewProjectWidget QPushButton#btnBrowse:hover {
+    background-color: #45475a;
+    border-color: #585b70;
+}
+NewProjectWidget QPushButton#btnBrowse:pressed {
+    background-color: #585b70;
+}
+
+/* Create button (primary / accent) */
+NewProjectWidget QPushButton#btnCreate {
+    background-color: #89b4fa;
+    border: none;
+    border-radius: 5px;
+    color: #1e1e2e;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 7px 20px;
+}
+NewProjectWidget QPushButton#btnCreate:hover {
+    background-color: #b4d0fb;
+}
+NewProjectWidget QPushButton#btnCreate:pressed {
+    background-color: #7aa2f7;
+}
+NewProjectWidget QPushButton#btnCreate:disabled {
+    background-color: #313244;
+    color: #585b70;
+}
