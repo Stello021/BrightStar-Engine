@@ -5,6 +5,7 @@
 #include <QGuiApplication>
 #include <QButtonGroup>
 #include <GameProject/NewProjectWidget.h>
+#include <GameProject/OpenProjectWidget.h>
 
 QProjectBrowserDialog::QProjectBrowserDialog(QWidget *parent)
 	: QDialog(parent)
@@ -36,14 +37,14 @@ QProjectBrowserDialog::QProjectBrowserDialog(QWidget *parent)
 			}
 		});
 
-	//Set the initial page to "Open Project"
-	ui->contentStack->setCurrentIndex(0);
-
 	ui->navigationLayout->setSpacing(30);
 
 	NewProjectWidget* newProjectWidget = new NewProjectWidget(this);
+	OpenProjectWidget* openProjectWidget = new OpenProjectWidget(this);
 
+	ui->contentStack->removeWidget(ui->pageOpenProject);
 	ui->contentStack->removeWidget(ui->pageNewProject);
+	ui->contentStack->insertWidget(0, openProjectWidget);
 	ui->contentStack->insertWidget(1, newProjectWidget);
 
 	connect(newProjectWidget, &NewProjectWidget::projectCreationRequested,
