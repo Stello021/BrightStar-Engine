@@ -34,6 +34,20 @@ public:
 
 signals:
 
+	/// <summary>
+	/// Emitted when the user double-clicks an item or clicks "Open" with a valid selection
+	/// </summary>
+	/// <param name="projectPath">
+	/// Absolute path to the chosen project directory.
+	/// </param>
+	void projectOpenRequested(const QString& projectPath);
+
+	/// <summary>
+	/// Emitted when the user clicks "Open" without a valid selection so the
+	/// parent dialog can display a status bar message without this widget having to know about it
+	/// </summary>
+	void validationFailed(const QString& reason);
+
 private slots:
 
 private:
