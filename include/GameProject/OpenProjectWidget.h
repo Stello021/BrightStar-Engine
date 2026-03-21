@@ -17,7 +17,20 @@ public:
 
 	/* Accessors */
 
+	/// <returns>
+	/// The file-system path of the project currently selected in the list
+	/// </returns>
+	[[nodiscard]] QString selectedProjectPath() const;
+
 	/* Mutators */
+
+	/// <summary>
+	/// Typically called by the parent dialog once the recent-project registry has been loaded
+	/// </summary>
+	/// <param name="paths">
+	/// New project list contents
+	/// </param>
+	void setProjectList(const QStringList& paths);
 
 signals:
 
@@ -25,7 +38,7 @@ private slots:
 
 private:
 
-	
+
 
 private:
 	/* Data members */
