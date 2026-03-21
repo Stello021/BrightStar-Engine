@@ -42,6 +42,7 @@ set(GAMEPROJECT_HEADERS
 set(GAMEPROJECT_UI
     ui/GameProject/QProjectBrowserDialog.ui
     ui/GameProject/NewProjectWidget.ui
+    ui/GameProject/OpenProjectWidget.ui
 )
 
 set(EDITOR_RESOURCES

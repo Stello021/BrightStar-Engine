@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+	<class>OpenProjectWidget</class>
+	<widget class="QWidget" name="OpenProjectWidget">
+		<property name="geometry">
+			<rect>
+				<x>0</x>
+				<y>0</y>
+				<width>700</width>
+				<height>400</height>
+			</rect>
+		</property>
+
+		<!-- Root vertical layout -->
+		<layout class="QVBoxLayout" name="rootLayout">
+			<property name="spacing">
+				<number>0</number>
+			</property>
+			<property name="leftMargin">
+				<number>32</number>
+			</property>
+			<property name="topMargin">
+				<number>32</number>
+			</property>
+			<property name="rightMargin">
+				<number>32</number>
+			</property>
+			<property name="bottomMargin">
+				<number>32</number>
+			</property>
+
+			<!-- Row 1: Project list + Preview pane -->
+			<item>
+				<layout class="QHBoxLayout" name="projectRow">
+					<property name="spacing">
+						<number>8</number>
+					</property>
+
+					<!-- Centering spacer (left) -->
+					<item>
+						<spacer name="projectLeftSpacer">
+							<property name="orientation">
+								<enum>Qt::Orientation::Horizontal</enum>
+							</property>
+							<property name="sizeHint" stdset="0">
+								<size>
+									<width>40</width>
+									<height>20</height>
+								</size>
+							</property>
+						</spacer>
+					</item>
+
+					<!-- QListWidget: shows the recently used / known projects -->
+					<item>
+						<widget class="QListWidget" name="projectList">
+							<property name="minimumWidth">
+								<number>195</number>
+							</property>
+							<property name="maximumWidth">
+								<number>195</number>
+							</property>
+							<property name="minimumHeight">
+								<number>250</number>
+							</property>
+							<property name="maximumHeight">
+								<number>250</number>
+							</property>
+						</widget>
+					</item>
+
+					<!-- QFrame: metadata / info pane for the selected project. -->
+					<item>
+						<widget class="QFrame" name="previewPane">
+							<property name="minimumWidth">
+								<number>400</number>
+							</property>
+							<property name="maximumWidth">
+								<number>400</number>
+							</property>
+							<property name="minimumHeight">
+								<number>250</number>
+							</property>
+							<property name="maximumHeight">
+								<number>250</number>
+							</property>
+							<property name="frameShape">
+								<enum>QFrame::Shape::Box</enum>
+							</property>
+							<property name="frameShadow">
+								<enum>QFrame::Shadow::Plain</enum>
+							</property>
+						</widget>
+					</item>
+
+					<!-- Centering spacer (right) -->
+					<item>
+						<spacer name="projectRightSpacer">
+							<property name="orientation">
+								<enum>Qt::Orientation::Horizontal</enum>
+							</property>
+							<property name="sizeHint" stdset="0">
+								<size>
+									<width>40</width>
+									<height>20</height>
+								</size>
+							</property>
+						</spacer>
+					</item>
+				</layout>
+			</item>
+
+			<!-- Spacing between list row and action row  -->
+			<item>
+				<spacer name="spacer1">
+					<property name="orientation">
+						<enum>Qt::Orientation::Vertical</enum>
+					</property>
+					<property name="sizeType">
+						<enum>QSizePolicy::Policy::Fixed</enum>
+					</property>
+					<property name="sizeHint" stdset="0">
+						<size>
+							<width>20</width>
+							<height>30</height>
+						</size>
+					</property>
+				</spacer>
+			</item>
+
+			<!--  Row 2: Open button -->
+			<item>
+				<layout class="QHBoxLayout" name="actionsRow">
+					<property name="spacing">
+						<number>8</number>
+					</property>
+
+					<item>
+						<spacer name="actionsLeftSpacer">
+							<property name="orientation">
+								<enum>Qt::Orientation::Horizontal</enum>
+							</property>
+							<property name="sizeHint" stdset="0">
+								<size>
+									<width>40</width>
+									<height>20</height>
+								</size>
+							</property>
+						</spacer>
+					</item>
+
+					<!-- default is set programmatically; Qt requires the parent dialog context -->
+					<item>
+						<widget class="QPushButton" name="btnOpen">
+							<property name="text">
+								<string>Open</string>
+							</property>
+							<property name="minimumWidth">
+								<number>96</number>
+							</property>
+							<property name="maximumWidth">
+								<number>96</number>
+							</property>
+						</widget>
+					</item>
+
+					<item>
+						<spacer name="actionsRightSpacer">
+							<property name="orientation">
+								<enum>Qt::Orientation::Horizontal</enum>
+							</property>
+							<property name="sizeHint" stdset="0">
+								<size>
+									<width>40</width>
+									<height>20</height>
+								</size>
+							</property>
+						</spacer>
+					</item>
+				</layout>
+			</item>
+
+			<!-- Push content upward: vertical stretch at the bottom -->
+			<item>
+				<spacer name="bottomStretch">
+					<property name="orientation">
+						<enum>Qt::Orientation::Vertical</enum>
+					</property>
+					<property name="sizeHint" stdset="0">
+						<size>
+							<width>20</width>
+							<height>40</height>
+						</size>
+					</property>
+				</spacer>
+			</item>
+
+		</layout>
+	</widget>
+	<layoutdefault spacing="6" margin="11"/>
+	<resources/>
+	<connections/>
+</ui>
