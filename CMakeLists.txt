@@ -32,11 +32,13 @@ set(EDITOR_HEADERS
 set(GAMEPROJECT_SOURCES
     src/GameProject/QProjectBrowserDialog.cpp
     src/GameProject/NewProjectWidget.cpp
+    src/GameProject/OpenProjectWidget.cpp
 )
 
 set(GAMEPROJECT_HEADERS
     include/GameProject/QProjectBrowserDialog.h
     include/GameProject/NewProjectWidget.h
+    include/GameProject/OpenProjectWidget.h
 )
 
 set(GAMEPROJECT_UI
