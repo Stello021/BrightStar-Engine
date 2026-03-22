@@ -50,9 +50,31 @@ signals:
 
 private slots:
 
+	/// <summary>
+	/// Vaidate the current selection; emits projectOpenRequested or validationFailed
+	/// </summary>
+	void onOpenClicked();
+
+	/// <summary>
+	/// Convenience shortcut: same logic as clicking "Open" button
+	/// </summary>
+	void onItemDoubleClicked();
+
+	/// <summary>
+	/// Updates the preview pane when the user selects a different project
+	/// </summary>
+	/// <param name="row"></param>
+	void onSelectionChanged(int row);
+
 private:
+	/* Helpers */
+	
 
+	/// <returns> true if a project is selected and its path exists. </returns>
+	[[nodiscard]] bool validateSelection(QString& outReason) const;
 
+	/// <param name="projectPath"> where metadata to update preview pane content are located </param>
+	void updatePreview(const QString& projectPath);
 
 private:
 	/* Data members */

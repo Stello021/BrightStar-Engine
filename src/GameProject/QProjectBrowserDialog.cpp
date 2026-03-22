@@ -47,6 +47,18 @@ QProjectBrowserDialog::QProjectBrowserDialog(QWidget *parent)
 	ui->contentStack->insertWidget(0, openProjectWidget);
 	ui->contentStack->insertWidget(1, newProjectWidget);
 
+	connect(openProjectWidget, &OpenProjectWidget::projectOpenRequested,
+		this, [this](const QString& path)
+		{
+			accept();
+		});
+
+	connect(openProjectWidget, &OpenProjectWidget::validationFailed,
+		this, [this](const QString& reason)
+		{
+
+		});
+
 	connect(newProjectWidget, &NewProjectWidget::projectCreationRequested,
 		this, [this](const QString& name, const QString& path, const QString& tmplId)
 		{

@@ -12,6 +12,11 @@ OpenProjectWidget::OpenProjectWidget(QWidget* parent)
 
 	ui->btnOpen->setDefault(true);
 
+	//Wire up internal slots
+	connect(ui->btnOpen, &QPushButton::clicked, this, &OpenProjectWidget::onOpenClicked);
+	connect(ui->projectList, &QListWidget::itemDoubleClicked, this, [this](QListWidgetItem*) { onItemDoubleClicked(); });
+	connect(ui->projectList, &QListWidget::currentRowChanged, this, &OpenProjectWidget::onSelectionChanged);
+
 }
 
 OpenProjectWidget::~OpenProjectWidget()
@@ -46,3 +51,60 @@ void OpenProjectWidget::setProjectList(const QStringList& paths)
 		item->setData(Qt::UserRole, path); //Store full path for retrieval
 	}
 }
+
+void OpenProjectWidget::onOpenClicked()
+{
+	QString reason;
+	if (!validateSelection(reason))
+	{
+		emit validationFailed(reason);
+		return;
+	}
+
+	emit projectOpenRequested(selectedProjectPath());
+}
+
+void OpenProjectWidget::onItemDoubleClicked()
+{
+	onOpenClicked();
+}
+
+void OpenProjectWidget::onSelectionChanged(int row)
+{
+	Q_UNUSED(row)
+
+	const QString path = selectedProjectPath();
+	updatePreview(path);
+
+	//Disable Open button when noting is selected to give clear visual feedback
+	//before the user even tries to confirm.
+	ui->btnOpen->setEnabled(!path.isEmpty());
+
+}
+
+bool OpenProjectWidget::validateSelection(QString& outReason) const
+{
+	const QString path = selectedProjectPath();
+
+	if (path.isEmpty())
+	{
+		outReason = tr("Please select a project from the list.");
+		return false;
+	}
+
+	if (!QDir(path).exists())
+	{
+		outReason = tr("The selected project path no longer exists: %1").arg(path);
+		return false;
+	}
+
+	return true;
+}
+
+void OpenProjectWidget::updatePreview(const QString& projectPath)
+{
+	//Placeholder
+	Q_UNUSED(projectPath);
+}
+
+
