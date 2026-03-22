@@ -144,3 +144,52 @@ NewProjectWidget QPushButton#btnCreate:disabled {
     background-color: #313244;
     color: #585b70;
 }
+
+/* Project list */
+OpenProjectWidget QListWidget#projectList {
+    background-color: #181825;
+    border: 1px solid #313244;
+    border-radius: 6px;
+    color: #cdd6f4;
+    font-size: 13px;
+    outline: none;
+}
+OpenProjectWidget QListWidget#projectList::item {
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+OpenProjectWidget QListWidget#projectList::item:hover {
+    background-color: rgba(137, 180, 250, 0.08);
+}
+OpenProjectWidget QListWidget#projectList::item:selected {
+    background-color: rgba(137, 180, 250, 0.18);
+    color: #89b4fa;
+}
+
+/* Preview pane */
+OpenProjectWidget QFrame#previewPane {
+    background-color: #11111b;
+    border: 1px solid #313244;
+    border-radius: 6px;
+}
+
+/* Open button (primary / accent — identical to btnCreate) */
+OpenProjectWidget QPushButton#btnOpen {
+    background-color: #89b4fa;
+    border: none;
+    border-radius: 5px;
+    color: #1e1e2e;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 7px 20px;
+}
+OpenProjectWidget QPushButton#btnOpen:hover {
+    background-color: #b4d0fb;
+}
+OpenProjectWidget QPushButton#btnOpen:pressed {
+    background-color: #7aa2f7;
+}
+OpenProjectWidget QPushButton#btnOpen:disabled {
+    background-color: #313244;
+    color: #585b70;
+}
